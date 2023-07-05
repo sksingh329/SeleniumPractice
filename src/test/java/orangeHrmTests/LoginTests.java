@@ -1,6 +1,6 @@
 package orangeHrmTests;
 
-import orangeHrm.Login;
+import app.orangeHrm.Login;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
