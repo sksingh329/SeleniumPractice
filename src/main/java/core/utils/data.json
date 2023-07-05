@@ -1,0 +1,17 @@
+{
+  "userName": {
+    "type": "text",
+    "locateBy": "name",
+    "name": "username"
+  },
+  "password": {
+    "type": "text",
+    "locateBy": "name",
+    "name": "password"
+  },
+  "login": {
+    "type": "button",
+    "locateBy": "xpath",
+    "xpath": "//button[@type='submit' and text()=' Login ']"
+  }
+}
