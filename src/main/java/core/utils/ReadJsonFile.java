@@ -6,11 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class ReadJsonFile {
-    private static String basePath = "src/main/resources/OR/orangeHrm/"; //TODO - Build this path from config.properties
-    private ObjectMapper objectMapper;
 
-    public static JsonNode getRootJsonNode(String jsonFileName){
-        String jsonFilePath = basePath+jsonFileName;
+    public static JsonNode getRootJsonNode(String jsonFilePath){
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = null;
         try {

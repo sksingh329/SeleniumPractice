@@ -2,7 +2,9 @@
   "userName": {
     "type": "text",
     "locateBy": "name",
-    "name": "username"
+    "name": "username",
+    "explicitWait": true,
+    "explicitWaitMaxDurationInSeconds": 50
   },
   "password": {
     "type": "text",
