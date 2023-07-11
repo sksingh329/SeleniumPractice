@@ -2,6 +2,7 @@ package orangeHrmTests;
 
 import app.orangeHrm.flows.LoginFlow;
 import core.utils.ConfigReader;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -27,22 +28,22 @@ public class LoginTests {
     }
     @Test
     public void testSuccessfulLogin() {
-        loginFlow.performLogin("Admin","admin123");
+        String expectedDashboardTitle = "Dashboard";
+        String actualDashboardTitle = loginFlow.performValidLogin("Admin","admin123");
+        Assert.assertEquals(actualDashboardTitle,expectedDashboardTitle);
     }
     @Test
-    public void testInvalidCredentials(){
-
+    public void testFailedLoginWithInvalidCredentials(){
+        String expectedInvalidCredentialText = "Invalid credentials";
+        String actualInvalidCredentialText = loginFlow.performInValidLogin("Admin","admin");
+        Assert.assertEquals(actualInvalidCredentialText,expectedInvalidCredentialText);
     }
     @Test
-    public void testBlankFields(){
+    public void testFailedLoginWithBlankFields(){
 
     }
     @Test
     public void testLogout(){
-
-    }
-    @Test
-    public void testRememberMe(){
 
     }
 }

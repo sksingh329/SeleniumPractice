@@ -15,5 +15,12 @@
     "type": "button",
     "locateBy": "xpath",
     "xpath": "//button[@type='submit' and text()=' Login ']"
+  },
+  "invalidCredential": {
+    "type": "label",
+    "locateBy": "xpath",
+    "xpath": "//div[@class='orangehrm-login-error']//div[@class='oxd-alert-content oxd-alert-content--error']//p",
+    "explicitWait": true,
+    "explicitWaitMaxDurationInSeconds": 50
   }
 }

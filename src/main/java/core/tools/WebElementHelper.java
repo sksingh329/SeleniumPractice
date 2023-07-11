@@ -29,8 +29,6 @@ public class WebElementHelper {
         String locateBy = elementNode.get("locateBy").asText();
         String locatorValue = elementNode.get(locateBy).asText();
 
-        System.out.println("Locate By: "+locateBy +" and locator is: "+locatorValue);
-
         switch (locateBy){
             case "id":
                 locator = By.id(locatorValue);
@@ -59,9 +57,5 @@ public class WebElementHelper {
         else{
             return driver.findElement(locator);
         }
-
-
     }
-
-
 }

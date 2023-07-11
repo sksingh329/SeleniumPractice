@@ -1,5 +1,6 @@
 package app.orangeHrm.flows;
 
+import app.orangeHrm.pages.DashboardPage;
 import app.orangeHrm.pages.LoginPage;
 import core.tools.BrowserActions;
 import core.tools.DriverFactory;
@@ -22,7 +23,12 @@ public class LoginFlow {
     public BrowserActions getBrowserActions(){
         return browserActions;
     }
-    public void performLogin(String userName, String password){
-        loginPage.login(userName,password);
+    public String performValidLogin(String userName, String password){
+        DashboardPage dashboardPage = loginPage.loginAs(userName,password);
+        return dashboardPage.getDashboardTitle();
+    }
+    public String performInValidLogin(String userName, String password){
+        LoginPage errorLoginPage = loginPage.loginExpectedFailure(userName,password);
+        return errorLoginPage.getInvalidCredentialsText();
     }
 }

@@ -1,0 +1,9 @@
+{
+  "dashboardTitle": {
+    "type": "label",
+    "locateBy": "xpath",
+    "xpath": "//span[@class='oxd-topbar-header-breadcrumb']/h6",
+    "explicitWait": true,
+    "explicitWaitMaxDurationInSeconds": 50
+  }
+}
