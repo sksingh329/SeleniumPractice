@@ -35,15 +35,17 @@ public class LoginTests {
     @Test
     public void testFailedLoginWithInvalidCredentials(){
         String expectedInvalidCredentialText = "Invalid credentials";
-        String actualInvalidCredentialText = loginFlow.performInValidLogin("Admin","admin");
+        loginFlow.performInValidLogin("Admin","admin");
+        String actualInvalidCredentialText = loginFlow.getInvalidCredentialText();
         Assert.assertEquals(actualInvalidCredentialText,expectedInvalidCredentialText);
     }
     @Test
     public void testFailedLoginWithBlankFields(){
-
-    }
-    @Test
-    public void testLogout(){
-
+        String expectedRequiredText = "Required";
+        loginFlow.performInValidLogin("","");
+        String actualUserNameFieldRequiredText = loginFlow.getUserNameFieldRequiredText();
+        Assert.assertEquals(actualUserNameFieldRequiredText,expectedRequiredText);
+        String actualPasswordFieldRequiredText = loginFlow.getPasswordFieldRequiredText();
+        Assert.assertEquals(actualPasswordFieldRequiredText,expectedRequiredText);
     }
 }

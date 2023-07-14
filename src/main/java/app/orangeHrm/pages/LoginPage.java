@@ -15,30 +15,34 @@ public class LoginPage {
         this.envProperties = envProperties;
         webElementHelper = new WebElementHelper(driver,envProperties,pageObjectRepositoryName);
     }
-    public LoginPage typeUserName(String userName){
+    private void typeUserName(String userName){
         webElementHelper.findElement("userName").sendKeys(userName);
-        return this;
     }
-    public LoginPage typePassword(String password){
+    private void typePassword(String password){
         webElementHelper.findElement("password").sendKeys(password);
-        return this;
     }
-    public DashboardPage submitLogin(){
+    private void submitLogin(){
         webElementHelper.findElement("login").click();
-        return new DashboardPage(driver,envProperties);
     }
     public String getInvalidCredentialsText(){
         return webElementHelper.findElement("invalidCredential").getText();
     }
+    public String getUserNameRequiredText(){
+        return webElementHelper.findElement("userNameFieldRequired").getText();
+    }
+    public String getPasswordRequiredText(){
+        return webElementHelper.findElement("passwordFieldRequired").getText();
+    }
     public DashboardPage loginAs(String userName, String password){
         typeUserName(userName);
         typePassword(password);
-        return submitLogin();
+        submitLogin();
+        return new DashboardPage(driver,envProperties);
     }
-    public LoginPage loginExpectedFailure(String userName, String password){
+    public LoginPage loginWithInvalidCredentials(String userName, String password){
         typeUserName(userName);
         typePassword(password);
-        webElementHelper.findElement("login").click();
+        submitLogin();
         return this;
     }
 }

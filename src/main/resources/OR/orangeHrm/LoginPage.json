@@ -22,5 +22,17 @@
     "xpath": "//div[@class='orangehrm-login-error']//div[@class='oxd-alert-content oxd-alert-content--error']//p",
     "explicitWait": true,
     "explicitWaitMaxDurationInSeconds": 50
+  },
+  "userNameFieldRequired": {
+    "type": "label",
+    "locateBy": "xpath",
+    "xpath": "//input[@name='username']/../..//span",
+    "explicitWait": true,
+    "explicitWaitMaxDurationInSeconds": 50
+  },
+  "passwordFieldRequired": {
+    "type": "label",
+    "locateBy": "xpath",
+    "xpath": "//input[@name='password']/../..//span"
   }
 }

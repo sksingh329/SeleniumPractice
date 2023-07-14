@@ -27,8 +27,16 @@ public class LoginFlow {
         DashboardPage dashboardPage = loginPage.loginAs(userName,password);
         return dashboardPage.getDashboardTitle();
     }
-    public String performInValidLogin(String userName, String password){
-        LoginPage errorLoginPage = loginPage.loginExpectedFailure(userName,password);
-        return errorLoginPage.getInvalidCredentialsText();
+    public void performInValidLogin(String userName, String password){
+        loginPage.loginWithInvalidCredentials(userName,password);
+    }
+    public String getInvalidCredentialText(){
+        return loginPage.getInvalidCredentialsText();
+    }
+    public String getUserNameFieldRequiredText(){
+        return loginPage.getUserNameRequiredText();
+    }
+    public String getPasswordFieldRequiredText(){
+        return loginPage.getPasswordRequiredText();
     }
 }
