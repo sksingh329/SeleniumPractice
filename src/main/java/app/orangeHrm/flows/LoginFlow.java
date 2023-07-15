@@ -9,26 +9,30 @@ import org.openqa.selenium.WebDriver;
 import java.util.Properties;
 
 public class LoginFlow {
-    private WebDriver driver;
-    private Properties envProperties;
-    private BrowserActions browserActions;
+    private final BrowserActions browserActions;
     private LoginPage loginPage;
+    private DashboardPage dashboardPage;
     public LoginFlow(Properties properties){
-        envProperties = properties;
-        this.driver = DriverFactory.newDriver(envProperties.getProperty("browserName"));
+        WebDriver driver = DriverFactory.newDriver(properties.getProperty("browserName"));
         browserActions = new BrowserActions(driver);
-        browserActions.launchUrl(envProperties.getProperty("appUrl"));
-        loginPage = new LoginPage(driver,envProperties);
+        browserActions.launchUrl(properties.getProperty("appUrl"));
+        loginPage = new LoginPage(driver, properties);
     }
     public BrowserActions getBrowserActions(){
         return browserActions;
     }
-    public String performValidLogin(String userName, String password){
-        DashboardPage dashboardPage = loginPage.loginAs(userName,password);
-        return dashboardPage.getDashboardTitle();
+    public void performValidLogin(String userName, String password){
+        loginPage.typeUserName(userName);
+        loginPage.typePassword(password);
+        dashboardPage = loginPage.submitLogin();
     }
     public void performInValidLogin(String userName, String password){
-        loginPage.loginWithInvalidCredentials(userName,password);
+        loginPage.typeUserName(userName);
+        loginPage.typePassword(password);
+        this.loginPage = loginPage.submitLoginWhenLoginFailed();
+    }
+    public String getDashboardHeader(){
+        return dashboardPage.getDashboardHeader();
     }
     public String getInvalidCredentialText(){
         return loginPage.getInvalidCredentialsText();

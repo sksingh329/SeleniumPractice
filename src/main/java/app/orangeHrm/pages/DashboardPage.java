@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriver;
 import java.util.Properties;
 
 public class DashboardPage {
-    private final String pageObjectRepositoryName = "DashboardPage.json";
-    private WebElementHelper webElementHelper;
+    private final WebElementHelper webElementHelper;
     public DashboardPage(WebDriver driver, Properties envProperties){
-        webElementHelper = new WebElementHelper(driver,envProperties,pageObjectRepositoryName);
+        String pageObjectRepositoryName = "DashboardPage.json";
+        webElementHelper = new WebElementHelper(driver,envProperties, pageObjectRepositoryName);
     }
-    public String getDashboardTitle(){
+    public String getDashboardHeader(){
         return webElementHelper.findElement("dashboardTitle").getText();
     }
 }

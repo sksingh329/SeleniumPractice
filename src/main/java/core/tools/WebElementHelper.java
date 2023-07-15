@@ -13,8 +13,8 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class WebElementHelper {
-    private WebDriver driver;
-    private String objectRepositoryFilePath;
+    private final WebDriver driver;
+    private final String objectRepositoryFilePath;
     private JsonNode elementNode;
 
     public WebElementHelper(WebDriver driver, Properties envProperties, String pageObjectRepositoryName){

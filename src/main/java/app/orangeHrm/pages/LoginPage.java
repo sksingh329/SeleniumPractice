@@ -6,23 +6,28 @@ import org.openqa.selenium.WebDriver;
 import java.util.Properties;
 
 public class LoginPage {
-    private final String pageObjectRepositoryName = "LoginPage.json";
-    private WebElementHelper webElementHelper;
-    private Properties envProperties;
-    private WebDriver driver;
+    private final WebElementHelper webElementHelper;
+    private final Properties envProperties;
+    private final WebDriver driver;
     public LoginPage(WebDriver driver, Properties envProperties){
         this.driver = driver;
         this.envProperties = envProperties;
-        webElementHelper = new WebElementHelper(driver,envProperties,pageObjectRepositoryName);
+        String pageObjectRepositoryName = "LoginPage.json";
+        webElementHelper = new WebElementHelper(driver,envProperties, pageObjectRepositoryName);
     }
-    private void typeUserName(String userName){
+    public void typeUserName(String userName){
         webElementHelper.findElement("userName").sendKeys(userName);
     }
-    private void typePassword(String password){
+    public void typePassword(String password){
         webElementHelper.findElement("password").sendKeys(password);
     }
-    private void submitLogin(){
+    public DashboardPage submitLogin(){
         webElementHelper.findElement("login").click();
+        return new DashboardPage(driver,envProperties);
+    }
+    public LoginPage submitLoginWhenLoginFailed(){
+        webElementHelper.findElement("login").click();
+        return new LoginPage(driver,envProperties);
     }
     public String getInvalidCredentialsText(){
         return webElementHelper.findElement("invalidCredential").getText();
@@ -33,16 +38,5 @@ public class LoginPage {
     public String getPasswordRequiredText(){
         return webElementHelper.findElement("passwordFieldRequired").getText();
     }
-    public DashboardPage loginAs(String userName, String password){
-        typeUserName(userName);
-        typePassword(password);
-        submitLogin();
-        return new DashboardPage(driver,envProperties);
-    }
-    public LoginPage loginWithInvalidCredentials(String userName, String password){
-        typeUserName(userName);
-        typePassword(password);
-        submitLogin();
-        return this;
-    }
+
 }

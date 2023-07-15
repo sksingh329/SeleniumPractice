@@ -27,20 +27,21 @@ public class LoginTests {
         loginFlow.getBrowserActions().quitBrowser();
     }
     @Test
-    public void testSuccessfulLogin() {
+    public void successfulLoginTest() {
         String expectedDashboardTitle = "Dashboard";
-        String actualDashboardTitle = loginFlow.performValidLogin("Admin","admin123");
+        loginFlow.performValidLogin("Admin","admin123");
+        String actualDashboardTitle = loginFlow.getDashboardHeader();
         Assert.assertEquals(actualDashboardTitle,expectedDashboardTitle);
     }
     @Test
-    public void testFailedLoginWithInvalidCredentials(){
+    public void failedLoginWithInvalidCredentialsTest(){
         String expectedInvalidCredentialText = "Invalid credentials";
         loginFlow.performInValidLogin("Admin","admin");
         String actualInvalidCredentialText = loginFlow.getInvalidCredentialText();
         Assert.assertEquals(actualInvalidCredentialText,expectedInvalidCredentialText);
     }
     @Test
-    public void testFailedLoginWithBlankFields(){
+    public void failedLoginWithBlankFieldsTest(){
         String expectedRequiredText = "Required";
         loginFlow.performInValidLogin("","");
         String actualUserNameFieldRequiredText = loginFlow.getUserNameFieldRequiredText();
