@@ -1,6 +1,6 @@
 # SeleniumPractice
 
-This is repo is for developing automation framework for testing web applocation. 
+This is a repo for developing an automation framework for testing web applications. 
 
 **Tool Stack **
 • Java 
