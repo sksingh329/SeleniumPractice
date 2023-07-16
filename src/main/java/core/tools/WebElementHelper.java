@@ -14,17 +14,16 @@ import java.util.Properties;
 
 public class WebElementHelper {
     private final WebDriver driver;
-    private final String objectRepositoryFilePath;
     private JsonNode elementNode;
+    private final JsonNode rootNode;
 
     public WebElementHelper(WebDriver driver, Properties envProperties, String pageObjectRepositoryName){
         this.driver = driver;
-        this.objectRepositoryFilePath = envProperties.getProperty("objectRepositoryBasePath")+envProperties.getProperty("appObjectRepositoryDirName")+pageObjectRepositoryName;
-
+        String objectRepositoryFilePath = envProperties.getProperty("objectRepositoryBasePath") + envProperties.getProperty("appObjectRepositoryDirName") + pageObjectRepositoryName;
+        rootNode= ReadJsonFile.getRootJsonNode(objectRepositoryFilePath);
     }
     public By getLocator(String objectName){
         By locator = null;
-        JsonNode rootNode = ReadJsonFile.getRootJsonNode(objectRepositoryFilePath);
         elementNode = rootNode.get(objectName);
         String locateBy = elementNode.get("locateBy").asText();
         String locatorValue = elementNode.get(locateBy).asText();

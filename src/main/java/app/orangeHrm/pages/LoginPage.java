@@ -9,10 +9,10 @@ public class LoginPage {
     private final WebElementHelper webElementHelper;
     private final Properties envProperties;
     private final WebDriver driver;
+    private final String pageObjectRepositoryName = "LoginPage.json";
     public LoginPage(WebDriver driver, Properties envProperties){
         this.driver = driver;
         this.envProperties = envProperties;
-        String pageObjectRepositoryName = "LoginPage.json";
         webElementHelper = new WebElementHelper(driver,envProperties, pageObjectRepositoryName);
     }
     public void typeUserName(String userName){
