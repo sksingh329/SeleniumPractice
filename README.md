@@ -1,6 +1,6 @@
 # SeleniumPractice
 
-This is a repo for developing an automation framework for testing web applications. 
+This is a repo for practicing web automation and developing an automation framework for testing web applications. 
 
 **Tech Stack **
 • Java 
