@@ -7,8 +7,8 @@ import java.util.Properties;
 
 public class DashboardPage {
     private final WebElementHelper webElementHelper;
+    private final String pageObjectRepositoryName = "DashboardPage.json";
     public DashboardPage(WebDriver driver, Properties envProperties){
-        String pageObjectRepositoryName = "DashboardPage.json";
         webElementHelper = new WebElementHelper(driver,envProperties, pageObjectRepositoryName);
     }
     public String getDashboardHeader(){

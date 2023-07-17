@@ -5,11 +5,11 @@ import core.utils.ReadJsonFile;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Locale;
 import java.util.Properties;
 
 public class WebElementHelper {
@@ -25,7 +25,7 @@ public class WebElementHelper {
     public By getLocator(String objectName){
         By locator = null;
         elementNode = rootNode.get(objectName);
-        String locateBy = elementNode.get("locateBy").asText();
+        String locateBy = elementNode.get("locateBy").asText().toLowerCase(Locale.ROOT);
         String locatorValue = elementNode.get(locateBy).asText();
 
         switch (locateBy){
@@ -39,6 +39,7 @@ public class WebElementHelper {
                 locator = By.xpath(locatorValue);
                 break;
             default:
+                //TODO - Replace with exception handler
                 System.out.println("Invalid Locator");
         }
         return locator;
