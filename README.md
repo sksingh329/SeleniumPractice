@@ -2,7 +2,7 @@
 
 This is a repo for developing an automation framework for testing web applications. 
 
-**Tool Stack **
+**Tech Stack **
 • Java 
 • Maven
 • TestNG
