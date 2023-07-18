@@ -1,6 +1,6 @@
-package orangeHrmTests;
+package orangehrmTests;
 
-import app.orangeHrm.flows.LoginFlow;
+import app.orangehrm.flows.LoginFlow;
 import core.utils.ConfigReader;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

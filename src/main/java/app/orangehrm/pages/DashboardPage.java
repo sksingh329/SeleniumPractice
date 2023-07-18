@@ -1,4 +1,4 @@
-package app.orangeHrm.pages;
+package app.orangehrm.pages;
 
 import core.tools.WebElementHelper;
 import org.openqa.selenium.WebDriver;

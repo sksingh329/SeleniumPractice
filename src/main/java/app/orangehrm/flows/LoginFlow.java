@@ -1,7 +1,7 @@
-package app.orangeHrm.flows;
+package app.orangehrm.flows;
 
-import app.orangeHrm.pages.DashboardPage;
-import app.orangeHrm.pages.LoginPage;
+import app.orangehrm.pages.DashboardPage;
+import app.orangehrm.pages.LoginPage;
 import core.tools.BrowserActions;
 import core.tools.DriverFactory;
 import org.openqa.selenium.WebDriver;
